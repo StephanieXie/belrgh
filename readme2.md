@@ -20,82 +20,81 @@ Follow the instructions [here](https://support.twilio.com/hc/en-us/articles/2231
 
 ```
 NOTE:
-
-          Twilio's servers require our app to be accessible via the internet, meaning we will need a public URL for building webhook integrations.
+        Twilio's servers require our app to be accessible via the internet, meaning we will need a public URL for building webhook integrations.
             - For prod, we are hosting our app on Heroku.
             - For testing, we are using ngrok.
 
-          Twilio, Heroku, and ngrok require you to make an account, which we have already done for this app.
+        Twilio, Heroku, and ngrok require you to make an account, which we have already done for this app.
 
-          All account information can be found in 'RaffleMaker/.static_info'.
+        All account information can be found in 'RaffleMaker/.static_info'.
 ```
 
 **Setting up**
 
 1. Install [Homebrew](https://treehouse.github.io/installation-guides/mac/homebrew) and [Node.js](https://treehouse.github.io/installation-guides/mac/node-mac.html).
 
-  ```
-  # Homebrew
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ```
+    # Homebrew
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-  # Node.js
-  brew.update
-  brew install node
-  ```
+    # Node.js
+    brew.update
+    brew install node
+    ```
 
 2. Clone this repository and `cd` into it.
 
-  ```
-  git clone https://github.com/StephanieXie/RaffleMaker.git
-  cd RaffleMaker
-  ```
+    ```
+    git clone https://github.com/StephanieXie/RaffleMaker.git
+    cd RaffleMaker
+    ```
 
 3. Install package dependencies.
 
-  `npm install`
+    `npm install`
 
 4. Install and configure [Heroku](https://toolbelt.heroku.com).
 
-  ```
-  # Install Heroku CLI
-  brew install heroku/brew/heroku
+    ```
+    # Install Heroku CLI
+    brew install heroku/brew/heroku
 
-  # Authenticate with the Heroku credentials'
-  heroku login
+    # Authenticate with the Heroku credentials'
+    heroku login
 
-  # Set up the existing Heroku app on local machine
-  heroku git:remote -a raffle-maker
+    # Set up the existing Heroku app on local machine
+    heroku git:remote -a raffle-maker
 
-  # Configure Heroku for MongoDB
-  heroku config --shell | grep MONGODB_URI >> .env
-  ```
+    # Configure Heroku for MongoDB
+    heroku config --shell | grep MONGODB_URI >> .env
+    ```
 
 5. Update `.env` with Twilio credentials.
 
-  Your `.env` should be formatted like the following:
+    Your `.env` should be formatted like the following:
 
-  ```
-  MONGODB_URI='<...>'
+    ```
+    MONGODB_URI='<...>'
 
-  TWILIO_ACCOUNT_SID='<...>'
-  TWILIO_AUTH_TOKEN='<...>'
-  TWILIO_NUMBER='<...>'
-  ```
+    TWILIO_ACCOUNT_SID='<...>'
+    TWILIO_AUTH_TOKEN='<...>'
+    TWILIO_NUMBER='<...>'
+    ```
 
 6. Install [ngrok](https://ngrok.com/).
 
-  ```
-  # Authenticate
-  ./ngrok authtoken <AUTH_TOKEN>
+    ```
+    # Authenticate
+    ./ngrok authtoken <AUTH_TOKEN>
 
-  # Add path and alias in `~/.bash_profile`
-  export PATH="/Users/<USER_NAME>/ngrok:${PATH}"
-  alias ngrok="/Users/<USER_NAME>/ngrok"
-  ```
+    # Add path and alias in `~/.bash_profile`
+    export PATH="/Users/<USER_NAME>/ngrok:${PATH}"
+    alias ngrok="/Users/<USER_NAME>/ngrok"
+    ```
 
 7. Finally, install `nodemon` so you don't have to start your app every time you make a change.
 
-  `npm install -g nodemon`
+    `npm install -g nodemon`
 
 **Starting the server**
 
@@ -107,12 +106,12 @@ NOTE:
 
 4. Click on your Twilio number, and at the bottom under 'Messaging', paste the URL into the 'A MESSAGE COMES IN' field.
 
-  Webhook / `<NGROK_URL>` / HTTP POST
+        Webhook / `<NGROK_URL>` / HTTP POST
 
-  ```
-  NOTE:
+    ```
+    NOTE:
             Since the ngrok URL is randomly generated, you will have to do steps 3 & 4 every time you quit ngrok in your terminal. So try not to quit.
-  ```
+    ```
 
 5. Open the ngrok URL in your browser.
 
@@ -127,8 +126,6 @@ NOTE:
 * [RECEIVE AND REPLY TO SMS AND MMS MESSAGES IN NODE.JS](https://www.twilio.com/docs/sms/tutorials/how-to-receive-and-reply-node-js)
 * [SETTING UP A SERVER FOR TWILIO CLIENT WITH NGROK](https://www.twilio.com/docs/voice/client/tutorials/how-to-set-up-a-server-for-twilio-client#running-locally-using-ngrok)
 * [CREATE AN SMS CONVERSATION IN NODE.JS](https://www.twilio.com/docs/sms/tutorials/how-to-create-sms-conversations-node-js)
-
-
 * [Node.js / Express.js / MongoDb (+Mongoose) Boilerplate](https://github.com/sslover/node-express-twilio-sms)
 
 **Misc.**
